@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog_drift/bootstrapper.dart';
 
-void main() {
+void main() async {
+  await setupIoc();
   runApp(const MyApp());
 }
 
