@@ -8,13 +8,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.8.2"
-  blocs:
-    dependency: "direct main"
-    description:
-      path: "packages/blocs"
-      relative: true
-    source: path
-    version: "1.0.0+1"
   boolean_selector:
     dependency: transitive
     description:
@@ -22,13 +15,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-  cache:
-    dependency: "direct main"
-    description:
-      path: "packages/cache"
-      relative: true
-    source: path
-    version: "1.0.0+1"
   characters:
     dependency: transitive
     description:
@@ -116,13 +102,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
-  models:
-    dependency: "direct main"
-    description:
-      path: "packages/models"
-      relative: true
-    source: path
-    version: "1.0.0+1"
   path:
     dependency: transitive
     description:
@@ -130,13 +109,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.1"
-  repositories:
-    dependency: "direct main"
-    description:
-      path: "packages/repositories"
-      relative: true
-    source: path
-    version: "1.0.0+1"
   sky_engine:
     dependency: transitive
     description: flutter
