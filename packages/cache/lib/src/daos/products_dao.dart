@@ -1,5 +1,5 @@
 import 'package:cache/src/database.dart';
-import 'package:cache/src/tables/products.dart';
+import 'package:cache/src/tables/products_data_model.dart';
 import 'package:drift/drift.dart';
 import 'package:injectable/injectable.dart';
 import 'package:models/models.dart';
@@ -16,11 +16,30 @@ class ProductsDao extends DatabaseAccessor<AppDb> with _$ProductsDaoMixin {
   Future<void> insertProduct(ProductsModel item) {
     return into(productsDataModel).insert(item.toInserProducts());
   }
+
+  Future<List<ProductsModel>> getAllProducts() async {
+    final items = await select(productsDataModel).get();
+    final result = items.map((item) => item.toGetProducts()).toList();
+    return result;
+  }
 }
 
 extension on ProductsModel {
   ProductsDataModelData toInserProducts() {
     return ProductsDataModelData(
+      id: id,
+      name: name,
+      description: description,
+      category: category,
+      productImage: productImage,
+      cost: cost,
+    );
+  }
+}
+
+extension on ProductsDataModelData {
+  ProductsModel toGetProducts() {
+    return ProductsModel(
       id: id,
       name: name,
       description: description,

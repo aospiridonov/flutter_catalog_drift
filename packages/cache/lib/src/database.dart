@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:cache/src/daos/products_dao.dart';
-import 'package:cache/src/tables/products.dart';
+import 'package:cache/src/tables/products_data_model.dart';
 import 'package:drift/drift.dart';
 // These imports are only needed to open the database
 import 'package:drift/native.dart';
