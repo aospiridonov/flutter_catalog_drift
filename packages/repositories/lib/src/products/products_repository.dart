@@ -14,6 +14,10 @@ class ProductsRepository {
     final items = await productsDao.getAllProducts();
     return items.map((item) => item.toModel()).toList();
   }
+
+  Future<void> deleteProduct(String id) async {
+    return productsDao.deleteProduct(id);
+  }
 }
 
 extension on ProductsModel {

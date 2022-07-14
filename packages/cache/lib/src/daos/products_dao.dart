@@ -22,6 +22,10 @@ class ProductsDao extends DatabaseAccessor<AppDb> with _$ProductsDaoMixin {
     final result = items.map((item) => item.toGetProducts()).toList();
     return result;
   }
+
+  Future<void> deleteProduct(String id) {
+    return (delete(productsDataModel)..where((tbl) => tbl.id.equals(id))).go();
+  }
 }
 
 extension on ProductsModel {
