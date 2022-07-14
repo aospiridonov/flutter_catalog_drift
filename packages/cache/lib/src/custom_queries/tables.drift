@@ -1,4 +1,4 @@
-CREATE TABLE products(
+CREATE TABLE productsData(
     id INT NOT NULL PRIMARY KEY AUTOINCREMENT,
     name TEXT,
     description TEXT,

@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:cache/src/daos/products_dao.dart';
+import 'package:cache/src/tables/products.dart';
 import 'package:drift/drift.dart';
 // These imports are only needed to open the database
 import 'package:drift/native.dart';
@@ -9,7 +11,8 @@ import 'package:path/path.dart' as p;
 part 'database.g.dart';
 
 @DriftDatabase(
-  tables: [Products],
+  daos: [ProductsDao],
+  tables: [ProductsDataModel],
   include: {'custom_queries/tables.drift'},
 )
 class AppDb extends _$AppDb {
