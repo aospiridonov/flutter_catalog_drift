@@ -3,19 +3,34 @@ import 'package:models/models.dart';
 
 class ProductsRepository {
   final ProductsDao productsDao;
+  final SearchProductsDao searchProductsDao;
 
-  ProductsRepository(this.productsDao);
+  ProductsRepository(this.productsDao, this.searchProductsDao);
 
   Future<void> insertProduct(ProductsModel item) {
+    searchProductsDao.insertSearchProduct(item);
     return productsDao.insertProduct(item);
   }
 
   Future<List<ProductsModel>> getAllProducts() async {
     final items = await productsDao.getAllProducts();
-    return items.map((item) => item.toModel()).toList();
+    final result = items.map((item) => item.toModel()).toList();
+    return result;
+  }
+
+  Future<List<ProductsModel>> searchProducts(String query) async {
+    final searchProducts = await searchProductsDao.searchProducts(query);
+    final products = await productsDao.getAllProducts();
+    final items = products
+        .where((element) =>
+            searchProducts.any((item) => element.id == item.id.toString()))
+        .toList();
+    final result = items.map((item) => item.toModel()).toList();
+    return result;
   }
 
   Future<void> deleteProduct(String id) async {
+    searchProductsDao.deleteSearchProduct(id);
     return productsDao.deleteProduct(id);
   }
 }

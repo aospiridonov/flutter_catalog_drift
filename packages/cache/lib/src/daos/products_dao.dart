@@ -14,7 +14,7 @@ class ProductsDao extends DatabaseAccessor<AppDb> with _$ProductsDaoMixin {
   ProductsDao(super.db);
 
   Future<void> insertProduct(ProductsModel item) {
-    return into(productsDataModel).insert(item.toInserProducts());
+    return into(productsDataModel).insert(item.toInsertProducts());
   }
 
   Future<List<ProductsModel>> getAllProducts() async {
@@ -29,7 +29,7 @@ class ProductsDao extends DatabaseAccessor<AppDb> with _$ProductsDaoMixin {
 }
 
 extension on ProductsModel {
-  ProductsDataModelData toInserProducts() {
+  ProductsDataModelData toInsertProducts() {
     return ProductsDataModelData(
       id: id,
       name: name,

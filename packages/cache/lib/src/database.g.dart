@@ -13,14 +13,14 @@ class ProductsDataData extends DataClass
   final String? name;
   final String? description;
   final String? productImage;
-  final String? catalog;
+  final String? category;
   final String? cost;
   ProductsDataData(
       {required this.id,
       this.name,
       this.description,
       this.productImage,
-      this.catalog,
+      this.category,
       this.cost});
   factory ProductsDataData.fromData(Map<String, dynamic> data,
       {String? prefix}) {
@@ -34,8 +34,8 @@ class ProductsDataData extends DataClass
           .mapFromDatabaseResponse(data['${effectivePrefix}description']),
       productImage: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}productImage']),
-      catalog: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}catalog']),
+      category: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}category']),
       cost: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}cost']),
     );
@@ -53,8 +53,8 @@ class ProductsDataData extends DataClass
     if (!nullToAbsent || productImage != null) {
       map['productImage'] = Variable<String?>(productImage);
     }
-    if (!nullToAbsent || catalog != null) {
-      map['catalog'] = Variable<String?>(catalog);
+    if (!nullToAbsent || category != null) {
+      map['category'] = Variable<String?>(category);
     }
     if (!nullToAbsent || cost != null) {
       map['cost'] = Variable<String?>(cost);
@@ -72,9 +72,9 @@ class ProductsDataData extends DataClass
       productImage: productImage == null && nullToAbsent
           ? const Value.absent()
           : Value(productImage),
-      catalog: catalog == null && nullToAbsent
+      category: category == null && nullToAbsent
           ? const Value.absent()
-          : Value(catalog),
+          : Value(category),
       cost: cost == null && nullToAbsent ? const Value.absent() : Value(cost),
     );
   }
@@ -87,7 +87,7 @@ class ProductsDataData extends DataClass
       name: serializer.fromJson<String?>(json['name']),
       description: serializer.fromJson<String?>(json['description']),
       productImage: serializer.fromJson<String?>(json['productImage']),
-      catalog: serializer.fromJson<String?>(json['catalog']),
+      category: serializer.fromJson<String?>(json['category']),
       cost: serializer.fromJson<String?>(json['cost']),
     );
   }
@@ -99,7 +99,7 @@ class ProductsDataData extends DataClass
       'name': serializer.toJson<String?>(name),
       'description': serializer.toJson<String?>(description),
       'productImage': serializer.toJson<String?>(productImage),
-      'catalog': serializer.toJson<String?>(catalog),
+      'category': serializer.toJson<String?>(category),
       'cost': serializer.toJson<String?>(cost),
     };
   }
@@ -109,14 +109,14 @@ class ProductsDataData extends DataClass
           String? name,
           String? description,
           String? productImage,
-          String? catalog,
+          String? category,
           String? cost}) =>
       ProductsDataData(
         id: id ?? this.id,
         name: name ?? this.name,
         description: description ?? this.description,
         productImage: productImage ?? this.productImage,
-        catalog: catalog ?? this.catalog,
+        category: category ?? this.category,
         cost: cost ?? this.cost,
       );
   @override
@@ -126,7 +126,7 @@ class ProductsDataData extends DataClass
           ..write('name: $name, ')
           ..write('description: $description, ')
           ..write('productImage: $productImage, ')
-          ..write('catalog: $catalog, ')
+          ..write('category: $category, ')
           ..write('cost: $cost')
           ..write(')'))
         .toString();
@@ -134,7 +134,7 @@ class ProductsDataData extends DataClass
 
   @override
   int get hashCode =>
-      Object.hash(id, name, description, productImage, catalog, cost);
+      Object.hash(id, name, description, productImage, category, cost);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -143,7 +143,7 @@ class ProductsDataData extends DataClass
           other.name == this.name &&
           other.description == this.description &&
           other.productImage == this.productImage &&
-          other.catalog == this.catalog &&
+          other.category == this.category &&
           other.cost == this.cost);
 }
 
@@ -152,14 +152,14 @@ class ProductsDataCompanion extends UpdateCompanion<ProductsDataData> {
   final Value<String?> name;
   final Value<String?> description;
   final Value<String?> productImage;
-  final Value<String?> catalog;
+  final Value<String?> category;
   final Value<String?> cost;
   const ProductsDataCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
     this.description = const Value.absent(),
     this.productImage = const Value.absent(),
-    this.catalog = const Value.absent(),
+    this.category = const Value.absent(),
     this.cost = const Value.absent(),
   });
   ProductsDataCompanion.insert({
@@ -167,7 +167,7 @@ class ProductsDataCompanion extends UpdateCompanion<ProductsDataData> {
     this.name = const Value.absent(),
     this.description = const Value.absent(),
     this.productImage = const Value.absent(),
-    this.catalog = const Value.absent(),
+    this.category = const Value.absent(),
     this.cost = const Value.absent(),
   });
   static Insertable<ProductsDataData> custom({
@@ -175,7 +175,7 @@ class ProductsDataCompanion extends UpdateCompanion<ProductsDataData> {
     Expression<String?>? name,
     Expression<String?>? description,
     Expression<String?>? productImage,
-    Expression<String?>? catalog,
+    Expression<String?>? category,
     Expression<String?>? cost,
   }) {
     return RawValuesInsertable({
@@ -183,7 +183,7 @@ class ProductsDataCompanion extends UpdateCompanion<ProductsDataData> {
       if (name != null) 'name': name,
       if (description != null) 'description': description,
       if (productImage != null) 'productImage': productImage,
-      if (catalog != null) 'catalog': catalog,
+      if (category != null) 'category': category,
       if (cost != null) 'cost': cost,
     });
   }
@@ -193,14 +193,14 @@ class ProductsDataCompanion extends UpdateCompanion<ProductsDataData> {
       Value<String?>? name,
       Value<String?>? description,
       Value<String?>? productImage,
-      Value<String?>? catalog,
+      Value<String?>? category,
       Value<String?>? cost}) {
     return ProductsDataCompanion(
       id: id ?? this.id,
       name: name ?? this.name,
       description: description ?? this.description,
       productImage: productImage ?? this.productImage,
-      catalog: catalog ?? this.catalog,
+      category: category ?? this.category,
       cost: cost ?? this.cost,
     );
   }
@@ -220,8 +220,8 @@ class ProductsDataCompanion extends UpdateCompanion<ProductsDataData> {
     if (productImage.present) {
       map['productImage'] = Variable<String?>(productImage.value);
     }
-    if (catalog.present) {
-      map['catalog'] = Variable<String?>(catalog.value);
+    if (category.present) {
+      map['category'] = Variable<String?>(category.value);
     }
     if (cost.present) {
       map['cost'] = Variable<String?>(cost.value);
@@ -236,7 +236,7 @@ class ProductsDataCompanion extends UpdateCompanion<ProductsDataData> {
           ..write('name: $name, ')
           ..write('description: $description, ')
           ..write('productImage: $productImage, ')
-          ..write('catalog: $catalog, ')
+          ..write('category: $category, ')
           ..write('cost: $cost')
           ..write(')'))
         .toString();
@@ -275,9 +275,9 @@ class ProductsData extends Table
       type: const StringType(),
       requiredDuringInsert: false,
       $customConstraints: '');
-  final VerificationMeta _catalogMeta = const VerificationMeta('catalog');
-  late final GeneratedColumn<String?> catalog = GeneratedColumn<String?>(
-      'catalog', aliasedName, true,
+  final VerificationMeta _categoryMeta = const VerificationMeta('category');
+  late final GeneratedColumn<String?> category = GeneratedColumn<String?>(
+      'category', aliasedName, true,
       type: const StringType(),
       requiredDuringInsert: false,
       $customConstraints: '');
@@ -289,7 +289,7 @@ class ProductsData extends Table
       $customConstraints: '');
   @override
   List<GeneratedColumn> get $columns =>
-      [id, name, description, productImage, catalog, cost];
+      [id, name, description, productImage, category, cost];
   @override
   String get aliasedName => _alias ?? 'productsData';
   @override
@@ -318,9 +318,9 @@ class ProductsData extends Table
           productImage.isAcceptableOrUnknown(
               data['productImage']!, _productImageMeta));
     }
-    if (data.containsKey('catalog')) {
-      context.handle(_catalogMeta,
-          catalog.isAcceptableOrUnknown(data['catalog']!, _catalogMeta));
+    if (data.containsKey('category')) {
+      context.handle(_categoryMeta,
+          category.isAcceptableOrUnknown(data['category']!, _categoryMeta));
     }
     if (data.containsKey('cost')) {
       context.handle(
@@ -684,6 +684,7 @@ abstract class _$AppDb extends GeneratedDatabase {
   late final ProductsData productsData = ProductsData(this);
   late final $ProductsDataModelTable productsDataModel =
       $ProductsDataModelTable(this);
+  late final ProductsDao productsDao = ProductsDao(this as AppDb);
   @override
   Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
   @override

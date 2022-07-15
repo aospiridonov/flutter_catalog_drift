@@ -6,6 +6,7 @@ Future<void> initRepositories(GetIt getIt) async {
   getIt.registerSingleton(
     () => ProductsRepository(
       getIt.get<ProductsDao>(),
+      getIt.get<SearchProductsDao>(),
     ),
   );
 }

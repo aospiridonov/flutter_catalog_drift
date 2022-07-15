@@ -3,6 +3,6 @@ CREATE TABLE productsData(
     name TEXT,
     description TEXT,
     productImage TEXT,
-    catalog TEXT,
+    category TEXT,
     cost TEXT
 );

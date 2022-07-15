@@ -1,0 +1,6 @@
+import 'tables.drift';
+
+_searchProduct(:query AS TEXT):
+SELECT *
+FROM productsData
+WHERE name = :query;
